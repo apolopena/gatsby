@@ -186,6 +186,8 @@ jobs:
       - <<: *attach_to_bootstrap
       - run: yarn lint:code
       - run: yarn lint:other
+      - run: ./scripts/assert-changed-files.sh "packages/*|.circleci/*"
+      - run: yarn typecheck
       - run: yarn check-repo-fields
 
   unit_tests_node8:
@@ -405,7 +407,7 @@ workflows:
   nightly-react-next:
     triggers:
       - schedule:
-          cron: "0 0 * * *"
+          cron: "0 0 * * 1,2,3,4,5"
           filters:
             branches:
               only:
@@ -428,7 +430,7 @@ workflows:
   nightly-react-experimental:
     triggers:
       - schedule:
-          cron: "0 0 * * *"
+          cron: "0 0 * * 1,2,3,4,5"
           filters:
             branches:
               only:

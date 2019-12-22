@@ -334,7 +334,13 @@ class LocalNodeModel {
    */
   trackInlineObjectsInRootNode(node) {
     if (!this._trackedRootNodes.has(node.id)) {
-      addRootNodeToInlineObject(this._rootNodeMap, node, node.id, true)
+      addRootNodeToInlineObject(
+        this._rootNodeMap,
+        node,
+        node.id,
+        true,
+        new Set()
+      )
       this._trackedRootNodes.add(node.id)
     }
   }
@@ -703,16 +709,21 @@ const addRootNodeToInlineObject = (
   rootNodeMap,
   data,
   nodeId,
-  isNode = false
-) => {
+  isNode /*: boolean */,
+  path /*: Set<mixed> */
+) /*: void */ => {
   const isPlainObject = _.isPlainObject(data)
 
   if (isPlainObject || _.isArray(data)) {
+    if (path.has(data)) return
+    path.add(data)
+
     _.each(data, (o, key) => {
       if (!isNode || key !== `internal`) {
-        addRootNodeToInlineObject(rootNodeMap, o, nodeId)
+        addRootNodeToInlineObject(rootNodeMap, o, nodeId, false, path)
       }
     })
+
     // don't need to track node itself
     if (!isNode) {
       rootNodeMap.set(data, nodeId)

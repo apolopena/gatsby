@@ -78,7 +78,7 @@ Since your .env file contains your real private API keys, it is considered a sec
 ```text:title=.env.example
 # rename this file to .env and supply the values listed below
 # also make sure they are available to the build tool (e.g. Netlify)
-# warning: variables prexifed with GATSBY_ will be made available to client-side code
+# warning: variables prefixed with GATSBY_ will be made available to client-side code
 # be careful not to expose sensitive data (in this case your Algolia admin key)
 
 GATSBY_ALGOLIA_APP_ID=insertValue
@@ -157,7 +157,7 @@ It might look a little intimidating at first, but basically you're just letting 
 
 Transformers allow you to modify the data returned by the queries to bring it into a format ready for searching. All you're doing here is 'flattening' posts and pages to 'unnest' the frontmatter fields (such as `author`, `date`, `tags`) but transformers could do much more for you if required. This makes the whole process of indexing your data really flexible and powerful. You could for instance use them to filter the results of your queries, format fields, add or merge them, etc.
 
-If you've come this far, then the "backend" is done. You should now be able to run `gatsby build` and see your indices in Algolia's webinterface be flooded with your data.
+If you've come this far, then the "backend" is done. You should now be able to run `gatsby build` and see your indices in Algolia's web interface be flooded with your data.
 
 ## Adding a search interface to your site
 
@@ -586,12 +586,12 @@ Note that this is where you define your array of search indices and pass it as a
 
 If everything works as expected, running `gatsby develop` should now give you some instant search magic looking something like in the video below! You can also play around with it [here](https://janosh.io/blog).
 
-`youtube: Amsub4xJ3Jc`
+https://youtu.be/Amsub4xJ3Jc
 
 ## Additional Resources
 
 If you have any issues or if you want to learn more about using Algolia for search, check out this tutorial from Jason Lengstorf:
 
-`youtube: VSkXyuXzwlc`
+https://youtu.be/VSkXyuXzwlc
 
 You can also find stories of companies using Gatsby + Algolia together [in the Algolia section of the blog](/blog/tags/algolia).
